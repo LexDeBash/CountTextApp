@@ -7,6 +7,20 @@
 
 import UIKit
 
+// Storyboard и IBOutlets будут готовы изначально до записи, чтобы не тратить время
+
+// Сначала объяснить отдельно про метод enumerateStrings и параметры в замыкании substring, substringRange, enslosingRange, stop и также реализовать вывод в print конкретного количества слов при помощи stop:
+
+//var wordCount = 0
+//let text = mainTextView.text
+//text.enumerateSubstrings(in: text?.startIndex..< text.endIndex, options: .byWords) { substring, substringRange, enclosingRange, stop in
+//    print(text[substringRange])
+//    wordCount += 1
+//    if wordCount == 10 {
+//        stop = true
+//    }
+//}
+
 class mainViewController: UIViewController {
     @IBOutlet weak var mainTextView: UITextView!
     
@@ -22,7 +36,7 @@ class mainViewController: UIViewController {
         mainTextView.text.count
     }
     
-    
+    // Метод в кнопке реализовать при записи видео
     @IBAction func countButtonPressed() {
         charactersCountLabel.text = "Total characters: \(totalCharacters) Characters"
         wordsCountLabel.text = "Total words: \(countTextComponents(options: .byWords)) Words"
@@ -35,6 +49,7 @@ class mainViewController: UIViewController {
         mainTextView.text = ""
     }
     
+    //Приватный метод реализовать при записи видео
     private func countTextComponents(options: String.EnumerationOptions) -> Int {
         var components = [Substring]()
         guard let text = mainTextView.text else { return 0 }
@@ -44,4 +59,5 @@ class mainViewController: UIViewController {
         return components.count
     }
 }
+
 
